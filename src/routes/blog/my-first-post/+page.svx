@@ -1,0 +1,11 @@
+--- 
+title: Svex up your markdown 
+description: My first markdown content
+keywords:
+ - Keyword 1
+ - Keyword 2
+--- 
+
+# { title }
+
+This is more markdown **base content**
