@@ -13,11 +13,6 @@ Is also a very well known fact that creating content is a very good way to: lear
 
 In this coures you'll learn how to start working with one of the coolest frameworks out there: [SvelteKit](https://kit.svelte.dev/), how to style your site with [TailwindCSS](https://tailwindcss.com/), how to handle your content with [Sanity](https://sanity.io) in combination with [github](https://github.com/) and your preferred host platform.
 
-Also, during the lessons you'll learn how to use and setup a few other set of technologies.
-* Cloudinary to generate social images and image optimization for your content.
-* Github API to automatically create content inside your repository
-* Webhooks
-* dev.to, hashnode and medium API to automatically repost your content.
 
 > **Important** 
 > SvelteKit is still in beta. Expect bugs! Read more [here](https://svelte.dev/blog/sveltekit-beta), and track progress towards 1.0 [here](https://github.com/sveltejs/kit/issues?q=is%3Aopen+is%3Aissue+milestone%3A1.0+sort%3Aupdated-desc).
@@ -25,15 +20,17 @@ Also, during the lessons you'll learn how to use and setup a few other set of te
 > It will be updated after sveltekit reach version 1.0.0 
 
 ### What is SvelteKit
+
+TLDR; It's a UI framework that compiles your components to highly optimized vanilla JavaScript
+
 SvelteKit is Svelte's take on the web application framework. This is the new (still in beta) official way to develop applications with Svelte. It is packed with features like routing, layouts, stage management, API routes, SSG, and SSR. If you come from React or Vue world, SvelteKit is the counterpart of Nextjs or Nuxt.
 
 SvelteKit helps you to make static sites, server-rendered sites, and even hybrid static/server-rendered apps. It delivers an outstanding developer experience and fast user experience like the Svelte philosophy describes.
 
 In general words, SvelteKit is a tool to take your Svelte code and transform it into a node app or static files. You can consider Svelte as the underlying language and SvelteKit the set that brings the server-side and some options about how an application should be architected.
 
-### What is MDX and MDsveX
 
-## What is MDX and MDsveX?
+### What is MDX and MDsveX
 
 [MDX](https://github.com/mdx-js/mdx) is a combination of Markdown and JSX
 
