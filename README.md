@@ -1,171 +1,149 @@
-# 🎉 Welcome on board!
+# Lesson 01: Setup
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-## 🚌 Create your own SvelteKit Blog with MDsveX, Tailwind and Sanity
+## Initial Setup
 
-- [Demo app can be found here]()
+To start this project, you need to run through an small amount of setup steps to get everything ready to work.
 
-Let's face it, every developer want to try new technologies, and what a better place to try it out that your own personal site or blog?
+First, let's think about what is the outcome of this project: *A personal site or blog to showcase your content or developer portfolio*.
+¿What will be showcase in the site?
+Base on the general description of the outcome the site should be able to:
+- Display articles/posts written for developers, meaning, it should include at least code highlight.
+- Display other content related with a developer portfolio like projects.
 
-Is also a very well known fact that creating content is a very good way to: learn and to create a profile or portfolio for your self.
+Also, ideally your site should be easy to find and the content should be good looking and shareable. 
 
-In this coures you'll learn how to start working with one of the coolest frameworks out there: [SvelteKit](https://kit.svelte.dev/), how to style your site with [TailwindCSS](https://tailwindcss.com/), how to handle your content with [Sanity](https://sanity.io) in combination with [github](https://github.com/) and your preferred host platform.
+Based on all of that you can derive a base stack.
 
-Also, during the lessons you'll learn how to use and setup a few other set of technologies.
-* Cloudinary to generate social images and image optimization for your content.
-* Github API to automatically create content inside your repository
-* Webhooks
-* dev.to, hashnode and medium API to automatically repost your content.
+- SvelteKit as the base framework.
+- TailwindCss for the UI.
+- MDsveX to allow you to write your article/posts in markdown but at same time allowing you to use dynamic components.
+- Sanity as CMS to handle any content of your site as your projects or other things you want to showcase.
+- Cloudinary to handle the open graph images to make your content better looking when sharing and also SEO friendly.
+> Optionally, you can add the use of third party APIs to allow you to repost your content or to handle everything in the CMS but keeping the markdown files.
 
-> **Important** 
-> SvelteKit is still in beta. Expect bugs! Read more [here](https://svelte.dev/blog/sveltekit-beta), and track progress towards 1.0 [here](https://github.com/sveltejs/kit/issues?q=is%3Aopen+is%3Aissue+milestone%3A1.0+sort%3Aupdated-desc).
-> This course was recorded pointing to the version 1.0.0-next.437 of Svelte kit 
-> It will be updated after sveltekit reach version 1.0.0 
+### SvelteKit
 
-### What is SvelteKit
-SvelteKit is Svelte's take on the web application framework. This is the new (still in beta) official way to develop applications with Svelte. It is packed with features like routing, layouts, stage management, API routes, SSG, and SSR. If you come from React or Vue world, SvelteKit is the counterpart of Nextjs or Nuxt.
+The first step will be to setup Sveltekit. 
+SvelteKit will give you the structure, conventions and convinience required to build a web application
 
-SvelteKit helps you to make static sites, server-rendered sites, and even hybrid static/server-rendered apps. It delivers an outstanding developer experience and fast user experience like the Svelte philosophy describes.
+To start you just need to open a terminal and run a couple of commands
 
-In general words, SvelteKit is a tool to take your Svelte code and transform it into a node app or static files. You can consider Svelte as the underlying language and SvelteKit the set that brings the server-side and some options about how an application should be architected.
-
-### What is MDX and MDsveX
-
-## What is MDX and MDsveX?
-
-[MDX](https://github.com/mdx-js/mdx) is a combination of Markdown and JSX
-
-An authoring format that allows the writer to write the well-known markdown format but also introduce dynamic content by using the power of JSX components
-
-It takes a string of markdown and transforms it to a Javascript string (React or Svelte)
-
-It basically allows you to consider a regular markdown file as a component opening the door to add working code into the markdown file.
-
-The MDX parser will insert your custom components into the parsed result, you can even replace base elements like paragraphs, headings, and others HTML elements.
-
-This allows you to have a better authoring experience and to create all of your content using your lovely markdown, but also empowering your content with rich media elements like interactive charts, alerts, or embed external content like youtube videos, images, etc.
-
-[MDsveX](https://mdsvex.com/) is the answer from [Svelte ](https://svelte.dev)world to the same need of authoring rich media content using a powerful media like markdown. This is a markdown pre-processor for Svelte components, this preprocessor allows you to use Svelte components in your markdown, or vice versa. It supports all Svelte syntax and almost all Markdown
-
-It uses  [remark](https://remark.js.org/) and [rehype](https://github.com/rehypejs/rehype) so you can use several plugins to enhance your experience.
-
-
-## 👨🏻‍💻 Course summary
-
-Ok. Are you ready? Cool, this will be quite a journey but fun and full of challenges. A few this that you'll be able to learn.
-
-- How to setup SvelteKit.
-- How to setup MDsveX
-- How to setup Tailwindcss
-- How to use setup Sanity
-- How to generate social images using cloudinary
-- How to use Sanity webhook with Github API to automatically trigger a new build in your content
-- How to use webhooks and 3rd party APIs to repost your content.
-- How to test your site with playwright
-- How to deploy your site
-
-## 👨🏻‍💻 Who Am I?
-<p align="center">
-<img src="https://github.com/matiasfha.png" width="200" />
-</p>
-
-👋 I [Matías Hernández](https://matiashernandez.dev), father, developer, podcaster, writer and instructor.
-
-I started my journey many years ago (even before jQuery became a thing), though this years I tried many different things but web developmet has always been my passion. During the last 10 years I officialy worked as "Softare Engineer" or "Developer" (the role name depends on the company 🤷‍♂️) for many different projects. During this years I collected ideas, concepts and knowledge that I try to share in different mediums to help other developers to level up their careers.
-
-I love what I do and I try to bring the same passion to the content creation trough courses at [egghead.io](https://matiasfha.dev/egghead), articles en [FreeCodeCamp](https://matiasfha.dev/fcces), [my blog](https://matiashernandez.dev), [Cloudinary](https://mediajams.dev/author/matias-hernandez) and other publicationss and also with my podcasts [Café con Tech](https://www.cafecon.tech/) & [Control Remoto](https://www.controlremoto.io/) and finally thorugh my [newsletter](https://microbytes.dev).
-
-Find me in twitter as [@matiasfha](https://twitter.com/matiasfha)
-
-## ⏰ Before the course
-
-The main requisits to start with sveltekit development is an "intermediate" knowledege on javascript and web development in general. You can bring everything you already know!
-
-### 🛠 Requirements
-
-This are the things you need to susccessfully go through this course
-
-#### Sytem Requirements
-
-- [git](https://git-scm.com/) v2.13 or above
-- [NodeJS](https://nodejs.org/) `12 || 14 || 15 || 16`
-- [npm](https://www.npmjs.com/) v6 or superior or [pnpm](https://pnpm.io/)
-
-This tools need to be part of your system, you can check each version in the terminal
-
-```shell
-$ git --version
-$ node --version
-$ npm --version
+```bash
+npm init svelte@next tip-jar
 ```
 
-#### Configuration
+This script will work as a wizard, showing you a few questions to get started, so:
 
-> If you like, you can fork this repository so you can store your progress.
+1. Select an Skeleton projeect
+2. Will not use Typescript (unless you want, but the course will not showcase the use of TS)
+3. Add ESLint
+4. Add Prettier
 
-- [ ] Clonse the repository
+After that you just need to enter into the newly created folder and install the dependencies
 
-```shell
-git clone https://github.com/matiasfha/sveltekit-course
+```bash
+cd tip-jar
+npm install
 ```
 
-- [ ] Install the dependencies
+### TailwindCSS
 
-```shell
-cd sveltekit-course.git
-pnpm install
+As mentioned before, this project will use Tailwind to give the UI a little touch, to configure tailwind inside your svelteKit project, you can use a simple script named
+[svelte-add](https://github.com/svelte-add/svelte-add)
+
+```bash
+npx svelte-add@latest tailwindcss
+npm install
 ```
 
-> this can take a few minutes
+### Hardhat
 
-If you have any problem during this process, please [fille an issue](https://github.com/matiasfha/sveltekit-course/issues/new).
+[Hardhat](https://hardhat.org) is the development environment of choice for this course, it allows you to compile, deploy, test and debug your smart contract.
+It helps you to run a local Ethereum network allowing you to have test accounts and to locally run your solidity code.
 
-#### Execute the project
+Let's install the required packages.
 
-The `main` branch hold the final project ready to be tested, if you want to run locally to check what you'll build you can do it by
+- Hardhat: The development environment
+- Chai: The assertion library for testing the contract
+- Ethers.js: A javascript library to interact with the Ethereum Blockchain
+- hardhat-waffle: A plugin to work with Waffle, a tool to test smart contracts
 
-```shell
-npm run start
+```bash
+npm install ethers hardhat @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers
 ```
 
-This will:
+## Configuration
 
-- spawn a local ethereum network
-- compile and locally deploy the smart contract
-- Run the contract tests
-- run the web application and open your browser
+Now that you have all the dependencies ready to go, is time to do some configurations to be able to work.-
 
-> Now you just need to import an account into metamask to test the application locally
-> This will be shown through the course
+### Hardhat
 
-### ❓ How to run each lesson
+First, run the started for hardhat
 
-Each video lesson have a companion code that you'll be able to find in a corresponding branch named as `lesson-XX`.
+```bash
+npx hardhat
+```
 
-You can navigate through the branches to review the resulting code to follow the video lesson.
+This will ask if you want an example project or an empty hardhat configuration, choose "Create an empty hardhat.config.js"
 
-## 📝 About the course
+After that, let's create some folders that you'll need
 
-### Lessons structure
+```bash
+mkdir scripts
+mkdri src/contracts
+mkdir test
+```
 
-Each lesson will show you a little step towards the en goals. Also each lesson have it's own branch and it's own Readme file that will give you some resources and written content related with the video lesson.
+Now, let edit the hardhat configuration file to set the paths required
 
-#### List of lessons
+```javascript
+require('@nomiclabs/hardhat-waffle'); // import the waffle plugin
 
+/**
+ * @type import('hardhat/config').HardhatUserConfig
+ */
+module.exports = {
+	solidity: '0.8.4', // The version of solidity
+	paths: {
+		artifacts: './src/artifacts', // Where the compilation artifacts will live
+		sources: './src/contracts' // Where the smart contract source code will found
+	},
+	networks: {
+		// define the networks where hardhat will deploy
+		hardhat: {
+			chainId: 1337 // To be able to work with metamask in localhost
+		}
+	}
+};
+```
 
-## Contributors ✨
+### SvelteKit
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+The svelteKit configuration will work out of the box, but if you want to deploy the web application to some place like Vercel, Cloudflare Workers, Netlify or similar you'll need [an adapter](https://kit.svelte.dev/docs#adapters)
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
+Let's install the Vercel adapter to later in the course, deploy the web application there.
 
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
+```bash
+npm install --save-dev @sveltejs/adapter-vercel@next
+```
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+And update the `svelte.config.js` to include the new adapter
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+```javascript
+import preprocess from 'svelte-preprocess';
+import adapter from '@sveltejs/adapter-vercel';
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	kit: {
+		adapter: adapter(),
+	},
+
+	preprocess: [preprocess({})]
+};
+
+export default config;
+```
