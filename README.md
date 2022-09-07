@@ -32,7 +32,7 @@ SvelteKit will give you the structure, conventions and convinience required to b
 To start you just need to open a terminal and run a couple of commands
 
 ```bash
-npm init svelte@next tip-jar
+npm init svelte@next my-portfolio
 ```
 
 This script will work as a wizard, showing you a few questions to get started, so:
@@ -45,7 +45,7 @@ This script will work as a wizard, showing you a few questions to get started, s
 After that you just need to enter into the newly created folder and install the dependencies
 
 ```bash
-cd tip-jar
+cd my-portfolio
 npm install
 ```
 
@@ -59,91 +59,156 @@ npx svelte-add@latest tailwindcss
 npm install
 ```
 
-### Hardhat
+### MDsveX
 
-[Hardhat](https://hardhat.org) is the development environment of choice for this course, it allows you to compile, deploy, test and debug your smart contract.
-It helps you to run a local Ethereum network allowing you to have test accounts and to locally run your solidity code.
+[MDsveX](https://mdsvex.com/docs) It's a markdown preprocessor for Svelte components. Is the Svelte take on MDX.
+This preprocessor allows you to use Svelte components inside your markdown files (or viceversa). 
 
-Let's install the required packages.
+You can do things like this:
 
-- Hardhat: The development environment
-- Chai: The assertion library for testing the contract
-- Ethers.js: A javascript library to interact with the Ethereum Blockchain
-- hardhat-waffle: A plugin to work with Waffle, a tool to test smart contracts
+```html
+<script>
+	import { Chart } from "../components/Chart.svelte";
+</script>
 
-```bash
-npm install ethers hardhat @nomiclabs/hardhat-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers
+# Here’s a chart
+
+The chart is rendered inside our MDsveX document.
+
+<Chart />
 ```
 
+Is based on common and battle tested APIs like [`unified`](https://unifiedjs.com/), [`remark`](https://github.com/remarkjs) and [`rehype`](https://github.com/rehypejs/rehype) allowing you to use any remark or rehype plugins available or write your own plugins to enhance your experience and content.
+
+> In fact during the lessons you'll found a few little tricks with rehype/remark.
+
+To install you'll again use `svelte-add` by just typing
+
+```bash
+npx svelte-add@latest mdsvex
+```
+
+and install the corresponding dependencies
+
+This will create the required files including the main configuration file `mdsvex.config.js` ready to be used
+
+
+> Quick tip, if you know what your are doing you can install all of the above in one line `npx create @svelte-add/kit@latest my-portfolio --with tailwindcss+mdsvex`
 ## Configuration
 
-Now that you have all the dependencies ready to go, is time to do some configurations to be able to work.-
+There is no more configuration to do!.
 
-### Hardhat
-
-First, run the started for hardhat
+You can try out what comes out of the box by just typing
 
 ```bash
-npx hardhat
+npm run dev --open
 ```
 
-This will ask if you want an example project or an empty hardhat configuration, choose "Create an empty hardhat.config.js"
+Let's use this time to review some SvelteKit's concepts that will be in use during the course.
 
-After that, let's create some folders that you'll need
+### Project files
 
-```bash
-mkdir scripts
-mkdri src/contracts
-mkdir test
+A typical SvelteKit project looks like this:
+```
+my-project/
+├ src/
+│ ├ lib/
+│ │ └ [your lib files]
+│ ├ params/
+│ │ └ [your param matchers]
+│ ├ routes/
+│ │ └ [your routes]
+│ ├ app.html
+│ ├ error.html
+│ └ hooks.js
+├ static/
+│ └ [your static assets]
+├ tests/
+│ └ [your tests]
+├ package.json
+├ svelte.config.js
+├ tsconfig.json
+└ vite.config.js
+└ mdsvex.config.js
 ```
 
-Now, let edit the hardhat configuration file to set the paths required
+#### src
+The `src` directory contains the meat of your project.
 
-```javascript
-require('@nomiclabs/hardhat-waffle'); // import the waffle plugin
+- `lib` contains your library code, which can be imported via the `$lib` alias, or packaged up for distribution using svelte-package
+- `params` contains any param matchers your app needs
+- `routes` contains the routes of your application
+- `app.html` is your page template — an HTML document containing the following placeholders:
+    - `%sveltekit.head%`— `<link>` and `<script>` elements needed by the app, plus any `<svelte:head>` content
+    -  `%sveltekit.body%`— the markup for a rendered page. Typically this lives inside a `<div>` or other element, rather than directly inside `<body>`, to prevent bugs caused by browser extensions injecting elements that are then destroyed by the hydration process
+    - `%sveltekit.assets%` — either paths.assets, if specified, or a relative path to `paths.base`
+    - `%sveltekit.nonce% `— a CSP nonce for manually included links and scripts, if used
+- `error.html` (optional) is the page that is rendered when everything else fails. It can contain the following placeholders:
+    - `%sveltekit.status%` — the HTTP status
+    - `%sveltekit.message%` — the error message
+- `hooks.js` (optional) contains your application's hooks
 
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
-module.exports = {
-	solidity: '0.8.4', // The version of solidity
-	paths: {
-		artifacts: './src/artifacts', // Where the compilation artifacts will live
-		sources: './src/contracts' // Where the smart contract source code will found
-	},
-	networks: {
-		// define the networks where hardhat will deploy
-		hardhat: {
-			chainId: 1337 // To be able to work with metamask in localhost
-		}
-	}
-};
-```
+You can use `.ts` files instead of `.js` files, if using TypeScript.
 
-### SvelteKit
+#### static
+Any static assets that should be served as-is, like robots.txt or favicon.png, go in here.
 
-The svelteKit configuration will work out of the box, but if you want to deploy the web application to some place like Vercel, Cloudflare Workers, Netlify or similar you'll need [an adapter](https://kit.svelte.dev/docs#adapters)
+#### tests
+If you chose to add tests to your project during npm create svelte@latest, they will live in this directory.
 
-Let's install the Vercel adapter to later in the course, deploy the web application there.
+#### package.json
+Your package.json file must include ``@sveltejs/kit``, svelte and vite as devDependencies.
 
-```bash
-npm install --save-dev @sveltejs/adapter-vercel@next
-```
+When you create a project with npm create svelte@latest, you'll also notice that package.json includes "type": "module". This means that .js files are interpreted as native JavaScript modules with import and export keywords. Legacy CommonJS files need a .cjs file extension.
 
-And update the `svelte.config.js` to include the new adapter
+#### svelte.config.js
+This file contains your Svelte and SvelteKit configuration.
 
-```javascript
-import preprocess from 'svelte-preprocess';
-import adapter from '@sveltejs/adapter-vercel';
+#### tsconfig.json
+This file (or jsconfig.json, if you prefer type-checked .js files over .ts files) configures TypeScript, if you added typechecking during npm create svelte@latest. Since SvelteKit relies on certain configuration being set a specific way, it generates its own .svelte-kit/tsconfig.json file which your own config extends.
 
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
-	kit: {
-		adapter: adapter(),
-	},
+#### vite.config.js
+A SvelteKit project is really just a Vite project that uses the @sveltejs/kit/vite plugin, along with any other Vite configuration.
 
-	preprocess: [preprocess({})]
-};
 
-export default config;
-```
+### Routing
+
+The main feature and convention of SvelteKit is that is have a filesystem-based router, meaning that the routes of your application are defined by the *directories* in your codebase
+
+> This differs a bit of previous versions and also from other metaframeworks where the routing is based on files.
+
+By default all the routes are served from `src/routes`, where `src/routes` is the main route, `src/root/folder` will create the `/folder` route.
+
+You can also do dynamic routes by usin `[]` in the folder name like `src/routes/blog/[slug]` this can be used to dynamically load data that can be identified by the `[slug]` portion of the url.
+
+*Each route directory contains at least one file identified by the `+` prefix*
+
+
+#### +page 
+There are 3 related `+page` files that defines the route
+- `+page.svelte` that is an svelte component. This is the content that will be rendered in the browser. Here is where you write your client facing code.
+
+- `+page.js` If your page required some data before it can be rendered, this is the place to write that logic, retrieve the data and pass it to the page. This can be done using the `load` function (more on this later). This function runs along with the page svelte component: In the server and in the browser,.
+
+- `+page.server.js` If you need or want to write logic to retrieve data that only run on the server, this is the file where you write that. During the client navigation SvelteKit will execute this file in the server to load the data. It use the same `load` function but will only run in the server (fully backend).
+
+#### +layout
+As in any other metaframework there is a way to "persist" certain components during the navigation, or in other words sharing a "shell" of components among your routes, like a navigation bar, footer, main container, etc.
+
+- `+layout.svelte` This file will hold the content of your layout that will be applied to every route under the folder where this file lives. Meaing that `src/routes/+layout.svelte` will be globally applied but `src/routes/contact/+layout.svelte` will be only applied to components under the  `contacts` route.
+
+> Note: Layout are nested, so the global layout will wrap the contacts layout.
+
+- `+layout.js` Similar to the pages files, a layout can `load` data. This javascript (or typescript file) define a `load` function that will run on SSR and client side navigation. All the data returned by this function will be available to all the child pages.
+
+- `+layout.server.js` If your layout data needs are only server side, you can move the `load` function from `+layout.js` to this file.
+
+
+#### +server
+
+Finally, the standalone api endpoint. You can define a route that will only have a file named `+server.js` this will define an "API endpoint" where you are in full control over the response.
+This file can export a function corresponding to each of the HTTP verbs `GET`,`POST`,`PATCH`,`PUT`and `DELETE` allowing you to create a full api.
+
+
+
+Now, its time to start creating your portfolio.
